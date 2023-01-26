@@ -50,6 +50,8 @@ class _MyAppState extends State<MyApp> {
 
   String cityname = "";
 
+  DateTime dateTime = DateTime.now();
+
   getCityWeather(String cityname) async {
     var client = http.Client();
     var uri = '${Global.domain}q=$cityname&appid=${Global.apiKey}';
@@ -64,6 +66,8 @@ class _MyAppState extends State<MyApp> {
       print(response.statusCode);
     }
   }
+
+
 
   updateUI(var decodedData) {
     setState(() {
@@ -171,6 +175,13 @@ class _MyAppState extends State<MyApp> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 30),
+                ),
+                Spacer(),
+                Text("${dateTime.hour} : ${dateTime.minute} PM",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff546A96),
+                      fontSize: 20),
                 ),
               ],
             ),
