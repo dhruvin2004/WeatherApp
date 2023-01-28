@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
-import 'modal/weather_modal_class.dart';
+
 
 class Global {
   static TextEditingController cityController = TextEditingController();

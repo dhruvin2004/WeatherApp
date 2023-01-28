@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 import 'global.dart';
-import 'modal/weather_modal_class.dart';
+
 
 void main() {
   runApp(
@@ -17,14 +17,14 @@ void main() {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xff7C91BB),
           elevation: 0,
           titleTextStyle: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
-      home: MyApp(),
+      home: const MyApp(),
     ),
   );
 }
@@ -116,39 +116,39 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Weather App"),
+        title: const Text("Weather App"),
       ),
-      backgroundColor: Color(0xff7C91BB),
+      backgroundColor: const Color(0xff7C91BB),
       body: RefreshIndicator(
         onRefresh: () async{
           await getCityWeather(cityname);
         },
         child: ListView(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           children: [
             Container(
               height: 35,
               width: w,
-              padding: EdgeInsets.only(left: 10, right: 10),
+              padding: const EdgeInsets.only(left: 10, right: 10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.search,
                     color: Colors.grey,
                   ),
                   Container(
                     height: 35,
                     width: w - 80,
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       left: 5,
                     ),
                     child: TextFormField(
                       controller: Global.cityController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "Search",
                           hintStyle: TextStyle(color: Colors.grey)),
@@ -171,14 +171,14 @@ class _MyAppState extends State<MyApp> {
               children: [
                 Text(
                   cityname,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 30),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text("${dateTime.hour} : ${dateTime.minute} PM",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color(0xff546A96),
                       fontSize: 20),
@@ -194,7 +194,7 @@ class _MyAppState extends State<MyApp> {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
+                image: const DecorationImage(
                     image: NetworkImage(
                       "https://i.pinimg.com/originals/a7/f0/d4/a7f0d449cf9d1e9a47a64306e50fac32.png",
                     ),
@@ -202,18 +202,18 @@ class _MyAppState extends State<MyApp> {
               ),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("${temp.toInt()}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               fontSize: 45)),
-                      Text(
+                      const Text(
                         " ºC",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -222,23 +222,23 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text("LON : ${lon.toDouble()}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Color(0xff546A96),
                               fontSize: 15)),
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
                       Text(
                         "LAN : ${lat}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Color(0xff546A96),
                             fontSize: 15),
@@ -248,7 +248,7 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -256,10 +256,10 @@ class _MyAppState extends State<MyApp> {
                 Container(
                   height: 180,
                   width: w / 2.2,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xff9CB1D2),
+                    color: const Color(0xff9CB1D2),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -267,7 +267,7 @@ class _MyAppState extends State<MyApp> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Row(
-                          children: [
+                          children: const [
                             BoxedIcon(
                               WeatherIcons.barometer,
                               color: Color(0xff546A96),
@@ -281,12 +281,12 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       Text(
                         "${press}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
@@ -294,14 +294,14 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   height: 180,
                   width: w / 2.2,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xff9CB1D2),
+                    color: const Color(0xff9CB1D2),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -309,12 +309,12 @@ class _MyAppState extends State<MyApp> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Row(
-                          children: [
-                            BoxedIcon(
+                          children: const [
+                             BoxedIcon(
                               WeatherIcons.humidity,
                               color: Color(0xff546A96),
                             ),
-                            Text(
+                             Text(
                               "HUMBIDITY",
                               style: TextStyle(
                                   color: Color(0xff546A96),
@@ -323,12 +323,12 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       Text(
                         "${hum}%",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
@@ -338,16 +338,16 @@ class _MyAppState extends State<MyApp> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 180,
               width: w / 2.2,
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Color(0xff9CB1D2),
+                color: const Color(0xff9CB1D2),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Column(
@@ -356,12 +356,13 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
-                        children: [
-                          BoxedIcon(
+                        children: const [
+                           BoxedIcon(
                             WeatherIcons.direction_up,
                             color: Color(0xff546A96),
                           ),
-                          Text(
+
+                           Text(
                             "MAX TEMP",
                             style: TextStyle(
                                 color: Color(0xff546A96),
@@ -370,12 +371,12 @@ class _MyAppState extends State<MyApp> {
                         ],
                       ),
                       Row(
-                        children: [
-                          BoxedIcon(
+                        children: const [
+                           BoxedIcon(
                             WeatherIcons.direction_down,
                             color: Color(0xff546A96),
                           ),
-                          Text(
+                           Text(
                             "MIN TEMP",
                             style: TextStyle(
                                 color: Color(0xff546A96),
@@ -385,7 +386,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Row(
@@ -393,14 +394,14 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       Text(
                         "${tempMax.toInt()}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
                       ),
                       Text(
                         "${tempMin.toInt()}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
@@ -410,7 +411,7 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -418,10 +419,10 @@ class _MyAppState extends State<MyApp> {
                 Container(
                   height: 180,
                   width: w / 2.2,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xff9CB1D2),
+                    color: const Color(0xff9CB1D2),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -429,12 +430,12 @@ class _MyAppState extends State<MyApp> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Row(
-                          children: [
-                            BoxedIcon(
+                          children: const[
+                             BoxedIcon(
                               WeatherIcons.cloud,
                               color: Color(0xff546A96),
                             ),
-                            Text(
+                             Text(
                               "CLOUDE",
                               style: TextStyle(
                                   color: Color(0xff546A96),
@@ -443,12 +444,12 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
                         "${cover}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
@@ -456,14 +457,14 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   height: 180,
                   width: w / 2.2,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xff9CB1D2),
+                    color: const Color(0xff9CB1D2),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -471,12 +472,12 @@ class _MyAppState extends State<MyApp> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Row(
-                          children: [
-                            BoxedIcon(
+                          children: const[
+                             BoxedIcon(
                               WeatherIcons.cloudy_windy,
                               color: Color(0xff546A96),
                             ),
-                            Text(
+                             Text(
                               "WIND SPEED",
                               style: TextStyle(
                                   color: Color(0xff546A96),
@@ -485,12 +486,12 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
                         "${speed}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
@@ -500,7 +501,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -508,10 +509,10 @@ class _MyAppState extends State<MyApp> {
                 Container(
                   height: 180,
                   width: w / 2.2,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xff9CB1D2),
+                    color: const Color(0xff9CB1D2),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
@@ -519,13 +520,13 @@ class _MyAppState extends State<MyApp> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Row(
-                          children: [
-                            Icon(
+                          children: const [
+                             Icon(
                               Icons.remove_red_eye,
                               color: Color(0xff546A96),
                             ),
-                            Text(
-                              " VISIBLITY",
+                             Text(
+                              "VISIBILITY",
                               style: TextStyle(
                                   color: Color(0xff546A96),
                                   fontWeight: FontWeight.bold),
@@ -533,54 +534,12 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
                         "${visibility}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 40),
-                      ),
-                    ],
-                  ),
-                ),
-                Spacer(),
-                Container(
-                  height: 180,
-                  width: w / 2.2,
-                  padding: EdgeInsets.all(15),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Color(0xff9CB1D2),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Row(
-                          children: [
-                            BoxedIcon(
-                              WeatherIcons.sunset,
-                              color: Color(0xff546A96),
-                            ),
-                            Text(
-                              " SUN SET",
-                              style: TextStyle(
-                                  color: Color(0xff546A96),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        "",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40),
